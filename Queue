@@ -1,0 +1,31 @@
+public static Queue<Integer> q9(Queue<Integer> q){
+		q.insert(null);
+		Queue<Integer> q2 = new Queue<Integer>();
+		int x = q.head();
+		q.remove();
+		while(!q.isEmpty()) {
+			if(q.head()!=null) {
+				if(q.head()<x) {
+					q.insert(x);
+					x = q.head();
+					q.remove();
+				}
+				else
+					q.insert(q.remove());
+			}
+			if(q.head()==null) { 
+				q.insert(q.remove());
+				if(q.head()==null)
+					q.remove();
+				else {
+					q2.insert(x);
+					//q.insert(q.remove());
+					x = q.head();
+					q.remove();
+					if(q.head()==null)
+						q2.insert(x);
+				}
+			}
+		}
+		return q2;
+	}
